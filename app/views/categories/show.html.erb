@@ -3,8 +3,6 @@
 <ul>
 <% @category.items.each do |item| %>
     <li><%= link_to item.title, item_path(item) %> - <%= "$#{item.price.to_f/100}" %></li>
-    <% if signed_in? %>
-      <input type="submit" name="" value="Add to Cart">
-    <% end %>
+    <%= button_to "Add to Cart", line_items_path unless !current_user %>
 <% end %>
 </ul>
